@@ -1,22 +1,20 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Product } from "../../app/models/product";
-import { 
-    Button
-} from "@mui/material";
 import ProductList from "./ProductList";
 
-interface Props {
-    products: Product[];
-    addProduct: () => void;
-}
-
 // props get properties from parent component to his childs
-export default function Catalog({products, addProduct}: Props) {
-    
+export default function Catalog() {
+    const [products, setProducts] = useState<Product[]>([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5142/api/Product')
+            .then(response => response.json())
+            .then(data => setProducts(data))
+    }, [])
+
     return (
         <Fragment>
             <ProductList products={products} />
-            <Button variant="contained" onClick={addProduct}>Add product</Button>
         </Fragment>
     )
 }
