@@ -4,9 +4,15 @@ export interface Product {
     produitPhoto: string
     produitPrix: number
     produitDescription: string
-    produitCategoryId?: number
-    produitTailleId?: number
-    produitCreatorId?: number
+    produitCategoryId: number
+    produitTailleId: number
+    produitCreatorId: number
+    categoryNom: string
+    creatorFirstname: string
+    creatorLastname: string
+    tailleLibelle: string
+    stockProduitTailleQuantite: number
+    stockProduitTailleQuantiteDisponible: number
 }
 
-// "?" makes the property optional inside the interface
+// ? makes the property optional inside the interface
